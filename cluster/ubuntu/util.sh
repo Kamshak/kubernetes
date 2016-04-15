@@ -229,6 +229,7 @@ EOF
 function create-kube-apiserver-opts() {
   cat <<EOF > ~/kube/default/kube-apiserver
 KUBE_APISERVER_OPTS="\
+ --allow-privileged=true
  --insecure-bind-address=0.0.0.0\
  --insecure-port=8080\
  --etcd-servers=http://127.0.0.1:4001\
@@ -280,6 +281,7 @@ function create-kubelet-opts() {
   fi
   cat <<EOF > ~/kube/default/kubelet
 KUBELET_OPTS="\
+ --allow-privileged=true
  --hostname-override=${1} \
  --api-servers=http://${2}:8080 \
  --logtostderr=true \
